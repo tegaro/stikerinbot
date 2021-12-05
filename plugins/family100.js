@@ -4,17 +4,15 @@ async function handler(m) {
     this.game = this.game ? this.game : {}
     let id = 'family100_' + m.chat
     if (id in this.game) {
-        this.sendButton(m.chat, 'Masih ada kuis yang belum terjawab di chat ini', '© stikerin', 'Nyerah', 'nyerah', this.game[id].msg)
+        this.sendButton(m.chat, 'Masih ada kuis yang belum terjawab di chat ini', '© ollie', 'Nyerah', 'nyerah', this.game[id].msg)
         throw false
     }
-    let res = await fetch(global.API('mel', '/game/caklontong', {}, 'apikey'))
-    if (!res.ok) throw await `${res.status} ${res.statusText}`
-    let json = await res.json()
-    if (!json.status) throw json
+    let src = await (await fetch('https://raw.githubusercontent.com/BochilTeam/database/master/games/family100.json')).json()
+    let json = src[Math.floor(Math.random() * src.length)]
     let caption = `
-*Soal:* ${json.result.soal}
+*Soal:* ${json.soal}
 
-Terdapat *${json.result.jawaban.length}* jawaban${json.jawaban.find(v => v.includes(' ')) ? `
+Terdapat *${json.jawaban.length}* jawaban${json.jawaban.find(v => v.includes(' ')) ? `
 (beberapa jawaban terdapat spasi)
 `: ''}
 
@@ -22,9 +20,9 @@ Terdapat *${json.result.jawaban.length}* jawaban${json.jawaban.find(v => v.inclu
     `.trim()
     this.game[id] = {
         id,
-        msg: await this.sendButton(m.chat, caption, '© stikerin', 'Nyerah', 'nyerah', m),
+        msg: await this.sendButton(m.chat, caption, '© ollie', 'Nyerah', 'nyerah', m),
         ...json,
-        terjawab: Array.from(json.result.jawaban, () => false),
+        terjawab: Array.from(json.jawaban, () => false),
         winScore,
     }
 }
