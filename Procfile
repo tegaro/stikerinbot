@@ -1,1 +1,1 @@
-web: node . --db 'https://json-server.tegaro.repl.co'
+worker: node . --db 'https://json-server.tegaro.repl.co'
