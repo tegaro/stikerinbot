@@ -14,6 +14,9 @@ global.APIs = { // API Prefix
   pencarikode: 'https://pencarikode.xyz',
   xteam: 'https://api.xteam.xyz',
   zeks: 'https://api.zeks.xyz',
+  lol: 'https://api.lolhuman.xyz',
+  vh: 'http://api.vhtear.com',
+  caliph: 'https://api.caliph.my.id',
 }
 global.APIKeys = { // APIKey nya disini
   // 'https://website': 'apikey'
@@ -25,6 +28,9 @@ global.APIKeys = { // APIKey nya disini
   'https://pencarikode.xyz': 'pais',
   'https://api.xteam.xyz': 'apikeymu',
   'https://api.zeks.xyz': 'apivinz',
+  'https://api.lolhuman.xyz': 'rikkabotz',
+  'http://api.vhtear.com': 'rikkachan',
+  'https://api.caliph.my.id': 'caliphganz',
 }
 
 // Sticker WM
