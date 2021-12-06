@@ -1,7 +1,7 @@
 let nh = require('nhentai')
 let moment = require('moment')
 let handler = async (m, { conn, args }) => {
- if (!db.data.chats[m.chat].nsfw && m.isGroup) throw 'NSFW Belum Diaktifkan'
+ if (!db.data.settings.nsfw) throw "Mode NSFW tidak aktif";
  if (!args[0]) throw 'Kodenya Mana?'
   let req = new nh.API()
   response = await req.fetchDoujin(args[0]).catch(e => {
