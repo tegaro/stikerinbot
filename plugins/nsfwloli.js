@@ -1,5 +1,6 @@
 let fetch = require('node-fetch')
      let handler  = async (m, { conn, args }) => {
+           if (!db.data.settings.nsfw) throw "Mode NSFW tidak aktif";
     heum = await require('node-fetch')('https://raw.githubusercontent.com/Caliph71/txt/main/nsfwloli.json').then(v => v.json())
 
    conn.sendFile(m.chat, heum[Math.floor(Math.random() * heum.length)], 'Server Error!', 'Lolinya Kaak', m, false)
