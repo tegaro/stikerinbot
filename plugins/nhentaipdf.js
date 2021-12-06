@@ -72,6 +72,3 @@ const get_result = new nhentai.API()
       await fs.promises.unlink("nhentai/" + title +".pdf")
       return output
 }
-;handler.disable = false
-;handler.disable = true
-;
