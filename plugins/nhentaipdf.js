@@ -33,7 +33,7 @@ let handler = async (m, { conn, args }) => {
 handler.help = ['nh', 'nhentai'].map(v => v + ' <code>')
 handler.tags = ['internet']
 handler.command = /^(nh|nhentai)$/i
-handler.limit = 1
+handler.limit = true
 module.exports = handler
 
 async function getpdf(id) {
