@@ -31,7 +31,7 @@ let handler = async (m, { conn, args }) => {
   conn.sendMessage(m.chat, await getpdf(args[0]), 'documentMessage', { quoted: m, filename: response.titles.english+'.pdf', thumbnail: await getBuffer(response.thumbnail.url), mimetype: 'application/pdf' })
 }
 handler.help = ['nh', 'nhentai'].map(v => v + ' <code>')
-handler.tags = ['sange']
+handler.tags = ['internet']
 handler.command = /^(nh|nhentai)$/i
 handler.limit = 1
 module.exports = handler
