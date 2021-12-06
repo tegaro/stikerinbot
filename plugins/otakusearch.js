@@ -23,7 +23,7 @@ let handler = async (m, { conn, text, usedPrefix, command}) => {
   conn.sendMessage(m.chat, { url: data[0].thumb_ }, 'imageMessage', { quoted: m, caption: txt })
 }
 handler.help = ['otakusearch', 'otakudesusearch'].map(a => a + ' <query>')
-handler.tags = ['wibu']
+handler.tags = ['downloader']
 handler.command = /^((otaku|otakudesu)search)$/i
 handler.owner = false
 handler.mods = false
