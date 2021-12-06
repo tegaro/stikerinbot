@@ -25,7 +25,7 @@ conn.sendFile(m.chat, hasil.img, 'ih wibu', caption, m)
 
 }
 handler.help = ['charanime <name>']
-handler.tags = ['wibu']
+handler.tags = ['internet']
 handler.command = /^(charanime)$/i
 
 module.exports = handler
