@@ -24,7 +24,7 @@ let handler = async (m, { usedPrefix, conn, args, text}) => {
                    
 }
 handler.help = ['nhsearch', 'nhentaisearch'].map(v => v + ' <query>')
-handler.tags = ['sange']
+handler.tags = ['internet']
 handler.command = /^(nh|nhentai)(search)$/i
 handler.limit = 1
 module.exports = handler
