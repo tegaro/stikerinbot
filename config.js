@@ -15,7 +15,7 @@ global.APIs = { // API Prefix
   pencarikode: 'https://pencarikode.xyz',
   xteam: 'https://api.xteam.xyz',
   vh: 'http://api.vhtear.com'
-  caliph: 'https://api.caliph.my.id',
+  calip: 'https://api.caliph.my.id',
   zeks: 'https://api.zeks.xyz',
 }
 global.APIKeys = { // APIKey nya disini
