@@ -28,7 +28,7 @@ ${data.desk}
   conn.sendMessage(m.chat, { url: data.thumb }, 'imageMessage', { caption: txt, quoted: m })
 }
 handler.help = ['kuso', 'kusonime'].map(a => a + ' <query>')
-handler.tags = ['wibu']
+handler.tags = ['internet']
 handler.command = /^kuso(nime)?$/i
 handler.owner = false
 handler.mods = false
