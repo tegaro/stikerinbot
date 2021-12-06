@@ -1,11 +1,10 @@
 let fs = require('fs')
-global.owner = ['6282264247854', '6285604354168'] // Letakan nomor kamu disini
+global.owner = ['6283128734012', '6288709645535', '6287755080455'] // Letakan nomor kamu disini
 global.mods = [] // Moderator?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Pengguna premium tidak memerlukan limit
 global.APIs = { // API Prefix
   // nama: 'https://website'
   mel: 'https://melcanz.com',
-  lol: 'https://api.lolhuman.xyz',
   bx: 'https://bx-hunter.herokuapp.com',
   rey: 'https://server-api-rey.herokuapp.com',
   dhnjing: 'https://dhnjing.xyz',
@@ -14,26 +13,23 @@ global.APIs = { // API Prefix
   nrtm: 'https://nurutomo.herokuapp.com',
   pencarikode: 'https://pencarikode.xyz',
   xteam: 'https://api.xteam.xyz',
-  vh: 'http://api.vhtear.com'
   zeks: 'https://api.zeks.xyz',
 }
 global.APIKeys = { // APIKey nya disini
   // 'https://website': 'apikey'
   'https://melcanz.com': 'trial',
-  'https://api.lolhuman.xyz': 'rikkabotz',
   'https://server-api-rey.herokuapp.com': 'apirey',
   'https://bx-hunter.herokuapp.com': 'Ikyy69',
   'https://hardianto-chan.herokuapp.com': 'hardianto',
   'https://neoxr-api.herokuapp.com': 'yntkts',
   'https://pencarikode.xyz': 'pais',
   'https://api.xteam.xyz': 'kurrxd09',
-  'http://api.vhtear.com': 'rikkachan',
   'https://api.zeks.xyz': 'a2DVFau41a6IOsBRRSHNewHJf2i',
 }
 
 // Sticker WM
-global.packname = 'kureiji'
-global.author = 'ollie'
+global.packname = 'arif️'
+global.author = 'amel'
 
 global.wait = '_*tunggu sedang di proses...*_'
 global.eror = '_*Server Error*_'
