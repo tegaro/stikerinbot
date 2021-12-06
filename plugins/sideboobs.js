@@ -8,7 +8,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) throw 'NSFW Belum Aktif'
    conn.sendFile(m.chat, json.url, 'boobs.jpg', json.title, m, false)
 }
 handler.help = ['sideboobs']
-handler.tags = ['sange']
+handler.tags = ['internet']
 handler.command = /^sideboobs$/i
 handler.owner = false
 handler.mods = false
