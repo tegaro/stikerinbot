@@ -8,7 +8,7 @@ await m.reply('Sedang Di Proses...')
 }
 handler.help = ['wallpaper', 'wp']
 handler.tags = ['internet']
-handler.command = /^(wallpaper|wp)$/i
+handler.command = /^(wallpaperanime|wpanime)$/i
 handler.limit = true
 
 module.exports = handler
