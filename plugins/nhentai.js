@@ -26,7 +26,7 @@ let handler = async (m, { usedPrefix, conn, args, text}) => {
 handler.help = ['nhsearch', 'nhentaisearch'].map(v => v + ' <query>')
 handler.tags = ['internet']
 handler.command = /^(nh|nhentai)(search)$/i
-handler.limit = 1
+handler.limit = true
 module.exports = handler
 
 async function getBuffer(url) {
