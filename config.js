@@ -5,6 +5,7 @@ global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Pengguna pre
 global.APIs = { // API Prefix
   // nama: 'https://website'
   mel: 'https://melcanz.com',
+  lol: 'https://api.lolhuman.xyz',
   bx: 'https://bx-hunter.herokuapp.com',
   rey: 'https://server-api-rey.herokuapp.com',
   dhnjing: 'https://dhnjing.xyz',
@@ -13,17 +14,22 @@ global.APIs = { // API Prefix
   nrtm: 'https://nurutomo.herokuapp.com',
   pencarikode: 'https://pencarikode.xyz',
   xteam: 'https://api.xteam.xyz',
+  vh: 'http://api.vhtear.com'
+  caliph: 'https://api.caliph.my.id',
   zeks: 'https://api.zeks.xyz',
 }
 global.APIKeys = { // APIKey nya disini
   // 'https://website': 'apikey'
   'https://melcanz.com': 'trial',
+  'https://api.lolhuman.xyz': 'rikkabotz',
   'https://server-api-rey.herokuapp.com': 'apirey',
   'https://bx-hunter.herokuapp.com': 'Ikyy69',
   'https://hardianto-chan.herokuapp.com': 'hardianto',
   'https://neoxr-api.herokuapp.com': 'yntkts',
   'https://pencarikode.xyz': 'pais',
   'https://api.xteam.xyz': 'kurrxd09',
+  'http://api.vhtear.com': 'rikkachan',
+  'https://api.caliph.my.id': 'caliphganz',
   'https://api.zeks.xyz': 'a2DVFau41a6IOsBRRSHNewHJf2i',
 }
 
