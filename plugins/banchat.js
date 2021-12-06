@@ -1,7 +1,7 @@
 let handler = async (m, { conn, isOwner, text, isAdmin }) => {
   let who
   if (m.isGroup) {
-    if (!(isAdmin || isOwner)) {
+    if (!isOwner) {
       global.dfail('admin', m, conn)
       throw false
     }
