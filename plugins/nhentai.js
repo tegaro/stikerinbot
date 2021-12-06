@@ -2,7 +2,7 @@ let nanaAPI = require('nana-api')
 let nana = new nanaAPI()
 let handler = async (m, { usedPrefix, conn, args, text}) => {
   conn.nhentai = conn.nhentai ? conn.nhentai : {}
- if (!db.data.chats[m.chat].nsfw && m.isGroup) throw 'NSFW Belum Diaktifkan'
+ if (!db.data.settings.nsfw) throw "Mode NSFW tidak aktif";
  if (!text) throw 'Cari apa?'
  m.reply('Mohon tunggu sebentar~')
   let g = await nana.search(text)
