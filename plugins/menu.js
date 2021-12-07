@@ -87,6 +87,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'internet') tags = {
     'internet': 'Internet'
   }
+  if (teks == 'anime') tags = {
+    'anime': 'Anime'
+  }
   if (teks == 'anonymous') tags = {
     'anonymous': 'Anonymous Chat'
   }
