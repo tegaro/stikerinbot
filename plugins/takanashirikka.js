@@ -5,7 +5,7 @@ let res = await fetch('https://raw.githubusercontent.com/tegaro/uwu/main/takanas
 if (!res.ok) throw await `${res.status} ${res.statusText}`;
 let json = await res.json();
 let url = json[Math.floor(Math.random() * json.length)]
-await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Rikka Mpshhh', '© ollie', 'Get Again', '/takanashirikka', m)
+await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Takanashi Rikka', '© ollie', 'Get Again', '/takanashirikka', m)
 }
 handler.command = /^(takanashirikka)$/i
 handler.tags = ['anime']
