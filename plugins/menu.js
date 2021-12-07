@@ -45,6 +45,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     'group': 'Grup',
     'premium': 'Premium',
     'internet': 'Internet',
+    'anime': 'Anime',
     'anonymous': 'Anonymous Chat',
     'nulis': 'MagerNulis & Logo',
     'downloader': 'Downloader',
