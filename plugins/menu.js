@@ -239,6 +239,10 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "description": "",
                   "rowId": `${_p}? internet`
                 }, {
+                  "title": "Anime",
+                  "description": "",
+                  "rowId": `${_p}? anime`
+                }, {
                   "title": "Anonymous",
                   "description": "",
                   "rowId": `${_p}? anonymous`
