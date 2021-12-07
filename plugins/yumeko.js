@@ -8,6 +8,6 @@ let url = json[Math.floor(Math.random() * json.length)]
 await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Yumeko Wangy', '© ollie', 'Get Again', '/yumeko', m)
 }
 handler.command = /^(yumeko)$/i
-handler.tags = ['fun']
+handler.tags = ['anime']
 handler.help = ['yumeko']
 module.exports = handler
