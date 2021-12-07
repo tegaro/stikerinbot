@@ -7,7 +7,7 @@ let handler = async (m, { text }) => {
  m.reply(teksnya.trim())
 }
 handler.help = ['nekodl'].map(v => v + ' <url>')
-handler.tags = ['sange']
+handler.tags = ['downloader']
 handler.limit = true
 handler.command = /^nekodl$/i
 
