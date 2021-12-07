@@ -34,7 +34,7 @@ let handler = async (m, { conn, args, text }) => {
 }
 
 handler.command = /^get(doujin)$/i
-handler.limit = 1
+handler.limit = true
 module.exports = handler
 
 async function getpdf(id) {
