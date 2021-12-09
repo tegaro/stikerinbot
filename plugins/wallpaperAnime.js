@@ -1,14 +1,15 @@
-const { MessageType } = require('@adiwajshing/baileys')
 const fetch = require('node-fetch')
 
 let handler = async (m, { conn }) => {
-await m.reply('Sedang Di Proses...')
-   conn.sendFile(m.chat, 'https://recoders-area.caliph.repl.co/api/wpnime', 'wallpaper.jpeg', 
-'Wallpaper Nya Kak', m)
+    let res = await fetch(global.API('xteam', '/randomimage/wpmobile', {}, 'APIKEY'))
+    if (!res.ok) throw eror
+    let img = await res.buffer()
+    if (!img) throw img
+    conn.sendFile(m.chat, img, '', 'nyaa >//<', m, 0, { thumbnail: await (await fetch(img)).buffer() })
 }
-handler.help = ['wallpaper', 'wp']
-handler.tags = ['internet']
-handler.command = /^(wallpaperanime|wpanime)$/i
+handler.help = ['wallpaperanime']
+handler.tags = ['anime']
+handler.command = /^(wallpaper|wp)anime$/i
 handler.limit = true
 
 module.exports = handler
