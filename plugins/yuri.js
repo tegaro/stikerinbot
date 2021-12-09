@@ -1,6 +1,7 @@
 let fetch = require('node-fetch')
 
 let handler = async (m, { conn, text }) => {
+  if (!db.data.settings.nsfw) throw "Mode NSFW belum aktif";
 let res = await fetch('https://hardianto.xyz/api/anime/random?nsfw=yuri&apikey=hardianto')
 if (!res.ok) throw await `${res.status} ${res.statusText}`;
 let json = await res.json();
