@@ -1,19 +1,13 @@
-const fetch = require('node-fetch')
+let fetch = require('node-fetch')
 
-let handler = async (m, { conn }) => {
-    try {
-        if (!db.data.settings.nsfw) throw "Admin Grup belum mengaktifkan mode NSFW";
-        let res = await fetch(global.API('xteam', '/randomimage/hentai', {}, 'APIKEY'))
-        if (res.status != 200) throw await res.text()
-        let img = await res.buffer()
-        conn.sendFile(m.chat, img, '', '*© ollie*', m, false, { thumbnail: Buffer.alloc(0) })
-    } catch (e) {
-        throw `Admin Grup belum mengaktifkan mode NSFW`
-    }
+let handler = async (m, { conn, text }) => {
+let res = await fetch('https://raw.githubusercontent.com/tegaro/uwu/main/hentai.json')
+if (!res.ok) throw await `${res.status} ${res.statusText}`;
+let json = await res.json();
+let url = json[Math.floor(Math.random() * json.length)]
+await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Random Hentai', '© ollie', 'Get Again', '/hentai', m)
 }
-handler.help = ['hentai']
-handler.tags = ['anime']
 handler.command = /^(hentai)$/i
-handler.limit = false
-
+handler.tags = ['anime']
+handler.help = ['hentai']
 module.exports = handler
