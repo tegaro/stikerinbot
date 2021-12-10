@@ -31,7 +31,6 @@ ${hasil.map(v => `
 }
 
 handler.help = ['layarkaca'].map(v => v + ' <query>')
-handler.tags = ['internet']
 handler.command = /^(layarkaca)$/i
 handler.owner = false
 handler.mods = false
