@@ -2,6 +2,7 @@ const fetch = require('node-fetch')
 
 let handler = async (m, { conn }) => {
     try {
+        if (!db.data.settings.nsfw) throw "Admin grup belum mengaktifkan mode NSFW";
         let res = await fetch(global.API('xteam', '/randomimage/ass', {}, 'APIKEY'))
         if (res.status != 200) throw await res.text()
         let img = await res.buffer()
