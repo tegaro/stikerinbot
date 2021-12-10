@@ -13,6 +13,6 @@ let handler = async (m, { conn }) => {
 handler.help = ['wallpaperanime']
 handler.tags = ['anime']
 handler.command = /^(wallpaper|wp)anime$/i
-handler.limit = true
+handler.limit = false
 
 module.exports = handler
