@@ -10,7 +10,7 @@ conn.sendMessage(m.chat, await buffer(i.thumbnail), 'imageMessage', { quoted: m,
 }
 }
 handler.help = ['anime <query>']
-handler.tags = ['internet']
+handler.tags = ['anime']
 handler.command = /^(anime)$/i
 handler.owner = false
 handler.mods = false
