@@ -10,9 +10,9 @@ let handler = async (m, { conn }) => {
         throw `Limit apikey habis atau error!`
     }
 }
-handler.help = ['wallpaperanime']
+handler.help = ['assnime']
 handler.tags = ['anime']
-handler.command = /^(wallpaper|wp)anime$/i
+handler.command = /^(assnime)$/i
 handler.limit = false
 
 module.exports = handler
