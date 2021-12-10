@@ -1,19 +1,13 @@
-const fetch = require('node-fetch')
+let fetch = require('node-fetch')
 
-let handler = async (m, { conn }) => {
-    try {
-      if (!db.data.settings.nsfw) throw "Admin grup belum mengaktifkan mode NSFW";
-        let res = await fetch(global.API('xteam', '/randomimage/ahegao', {}, 'APIKEY'))
-        if (res.status != 200) throw await res.text()
-        let img = await res.buffer()
-        conn.sendFile(m.chat, img, '', '*© ollie*', m, false, { thumbnail: Buffer.alloc(0) })
-    } catch (e) {
-        throw `Admin grup belum mengaktifkan mode NSFW`
-    }
+let handler = async (m, { conn, text }) => {
+let res = await fetch('https://raw.githubusercontent.com/tegaro/uwu/main/ahegao.json')
+if (!res.ok) throw await `${res.status} ${res.statusText}`;
+let json = await res.json();
+let url = json[Math.floor(Math.random() * json.length)]
+await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Random ahegao', '© ollie', 'Get Again', '/ahegao', m)
 }
-handler.help = ['ahegao']
-handler.tags = ['anime']
 handler.command = /^(ahegao)$/i
-handler.limit = false
-
+handler.tags = ['anime']
+handler.help = ['ahegao']
 module.exports = handler
