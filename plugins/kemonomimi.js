@@ -10,4 +10,5 @@ await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Random kemo
 handler.command = /^(kemonomimi)$/i
 handler.tags = ['anime']
 handler.help = ['kemonomimi']
+handler.nsfw = true
 module.exports = handler
