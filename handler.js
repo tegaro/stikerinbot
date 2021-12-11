@@ -81,6 +81,7 @@ module.exports = {
           if (!('sDemote' in chat)) chat.sDemote = ''
           if (!('descUpdate' in chat)) chat.descUpdate = true
           if (!('stiker' in chat)) chat.stiker = false
+          if (!('nsfw' in chat)) chat.nsfw = false
           if (!('delete' in chat)) chat.delete = true
           if (!('antiLink' in chat)) chat.antiLink = false
           if (!isNumber(chat.expired)) chat.expired = 0
@@ -89,6 +90,7 @@ module.exports = {
           if (!('viewonce' in chat)) chat.viewonce = true
         } else global.db.data.chats[m.chat] = {
           isBanned: false,
+          nsfw: false,
           welcome: false,
           detect: false,
           sWelcome: '',
@@ -118,7 +120,6 @@ module.exports = {
           if (!isNumber(settings.backupTime)) settings.backupTime = 0
           if (!'group' in settings) settings.group = false
           if (!'jadibot' in settings) settings.jadibot = false
-          if (!'nsfw' in settings) settings.nsfw = true
           if (!'restrict' in settings) settings.restrict = false
           if (!isNumber(settings.status)) settings.status = 0
         } else global.db.data.settings[this.user.jid] = {
@@ -132,7 +133,6 @@ module.exports = {
           backupTime: 0,
           group: false,
           jadibot: false,
-          nsfw: true,
           restrict: false,
           status: 0,
         }
