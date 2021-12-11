@@ -1,6 +1,5 @@
 let handler = async (m, { conn }) => {
     try {
-        if (!db.data.settings.nsfw) throw "Admin belum mengaktifkan mode NSFW";
         let res = await fetch(global.API('xteam', '/randomimage/bdsm', {}, 'APIKEY'))
         if (res.status != 200) throw await res.text()
         let img = await res.buffer()
@@ -13,5 +12,5 @@ handler.help = ['bdsm']
 handler.tags = ['anime']
 handler.command = /^(bdsm)$/i
 handler.limit = false
-
+handler.nsfw = true
 module.exports = handler
