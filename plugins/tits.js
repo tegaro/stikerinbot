@@ -10,4 +10,5 @@ await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Random tits
 handler.command = /^(tits)$/i
 handler.tags = ['anime']
 handler.help = ['tits']
+handler.nsfw = true
 module.exports = handler
