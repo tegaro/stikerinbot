@@ -277,7 +277,7 @@ module.exports = {
             fail('unreg', m, this)
             continue
           }
-          if (plugin.nsfw && !global.db.data.settings.nsfw) { // Nsfw
+          if (plugin.nsfw && !isAdmin.db.data.settings.nsfw) { // Nsfw
             fail('nsfw', m, this)
             continue
           }
