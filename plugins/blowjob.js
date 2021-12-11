@@ -1,7 +1,6 @@
 let fetch = require('node-fetch')
 
 let handler = async (m, { conn, text }) => {
-  if (!db.data.settings.nsfw) throw "Admin belum mengaktifkan mode NSFW";
 let res = await fetch('https://raw.githubusercontent.com/tegaro/uwu/main/blowjob.json')
 if (!res.ok) throw await `${res.status} ${res.statusText}`;
 let json = await res.json();
@@ -11,4 +10,5 @@ await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Random blow
 handler.command = /^(blowjob)$/i
 handler.tags = ['anime']
 handler.help = ['blowjob']
+handler.nsfw = true
 module.exports = handler
