@@ -9,8 +9,6 @@ let lol = global.API('lolhum', `/api/nhentaipdf/${args[0]}`, {}, 'apikey')
 }
 
 handler.help = ['nhpdf'].map(v => v + ' <code>')
-
-handler.tags = ['anime']
 handler.command = /^(nhpdf|nhd)$/i
 handler.nsfw = true
 
