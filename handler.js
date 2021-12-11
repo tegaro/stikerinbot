@@ -277,10 +277,6 @@ module.exports = {
             fail('unreg', m, this)
             continue
           }
-          if (plugin.nsfw && !isAdmin) { // Nsfw
-            fail('nsfw', m, this)
-            continue
-          }
 
           m.isCommand = true
           let xp = 'exp' in plugin ? parseInt(plugin.exp) : 17 // Pendapatkan XP per Command
