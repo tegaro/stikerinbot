@@ -1,7 +1,6 @@
 let fetch = require('node-fetch')
 
 let handler = async (m, { conn, text }) => {
-    if (!db.data.settings.nsfw) throw "Admin Grup belum mengaktifkan mode NSFW";
 let res = await fetch('https://raw.githubusercontent.com/tegaro/uwu/main/cuckold.json')
 if (!res.ok) throw await `${res.status} ${res.statusText}`;
 let json = await res.json();
@@ -11,4 +10,5 @@ await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Random cuck
 handler.command = /^(cuckold)$/i
 handler.tags = ['anime']
 handler.help = ['cuckold']
+handler.nsfw = true
 module.exports = handler
