@@ -10,4 +10,5 @@ await conn.sendButtonImg(m.chat, await (await fetch(url)).buffer(), 'Random kits
 handler.command = /^(kitsune)$/i
 handler.tags = ['anime']
 handler.help = ['kitsune']
+handler.nsfw = true
 module.exports = handler
