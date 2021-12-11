@@ -15,7 +15,7 @@ global.APIs = { // API Prefix
   pencarikode: 'https://pencarikode.xyz',
   xteam: 'https://api.xteam.xyz',
   zeks: 'https://api.zeks.xyz',
-  lol: 'https://api.lolhuman.xyz',
+  lolhuman: 'https://api.lolhuman.xyz',
   vh: 'http://api.vhtear.com',
   caliph: 'https://api.caliph.my.id',
 }
@@ -32,7 +32,7 @@ global.APIKeys = { // APIKey nya disini
   'https://api.zeks.xyz': 'a2DVFau41a6IOsBRRSHNewHJf2i',
   'https://api.caliph.my.id': 'caliphganz',
   'http://api.vhtear.com': 'rikkachan',
-  'https://api.lolhuman.xyz': 'rikkabotz',
+  'https://api.lolhuman.xyz': 'KurrMekk99',
 }
 
 // Sticker WM
