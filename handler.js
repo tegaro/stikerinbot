@@ -120,7 +120,7 @@ module.exports = {
           if (!isNumber(settings.backupTime)) settings.backupTime = 0
           if (!'group' in settings) settings.group = false
           if (!'jadibot' in settings) settings.jadibot = false
-          if (!'nsfw' in settings) settings.nsfw = true
+          if (!'nsfw' in settings) settings.nsfw = false
           if (!'restrict' in settings) settings.restrict = false
           if (!isNumber(settings.status)) settings.status = 0
         } else global.db.data.settings[this.user.jid] = {
@@ -134,7 +134,7 @@ module.exports = {
           backupTime: 0,
           group: false,
           jadibot: false,
-          nsfw: true,
+          nsfw: false,
           restrict: false,
           status: 0,
         }
@@ -279,7 +279,7 @@ module.exports = {
             fail('unreg', m, this)
             continue
           }
-          if (plugin.nsfw && !global.db.data.settings.nsfw) { // Nsfw
+          if (plugin.nsfw && !global.db.data.chats.nsfw) { // Nsfw
             fail('nsfw', m, this)
             continue
           }
