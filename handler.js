@@ -4,6 +4,7 @@ let simple = require('./lib/simple')
 const uploadImage = require('./lib/uploadImage')
 const knights = require('knights-canvas')
 let { MessageType } = require('@adiwajshing/baileys')
+
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
 module.exports = {
@@ -67,6 +68,7 @@ module.exports = {
           warning: 0,
           pasangan: '',
         }
+
         let chat = global.db.data.chats[m.chat]
         if (typeof chat !== 'object') global.db.data.chats[m.chat] = {}
         if (chat) {
@@ -85,7 +87,6 @@ module.exports = {
           if (!('antiBadword' in chat)) chat.antiBadword = true
           if (!('getmsg' in chat)) chat.getmsg = false
           if (!('viewonce' in chat)) chat.viewonce = true
-          if(!('nsfw' in chat)) chat.nsfw = true
         } else global.db.data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
@@ -102,8 +103,8 @@ module.exports = {
           antiBadword: true,
           getmsg: false,
           viewonce: true,
-          nsfw: true,
         }
+
         let settings = global.db.data.settings[this.user.jid]
         if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
         if (settings) {
@@ -117,6 +118,7 @@ module.exports = {
           if (!isNumber(settings.backupTime)) settings.backupTime = 0
           if (!'group' in settings) settings.group = false
           if (!'jadibot' in settings) settings.jadibot = false
+          if (!'nsfw' in settings) settings.nsfw = true
           if (!'restrict' in settings) settings.restrict = false
           if (!isNumber(settings.status)) settings.status = 0
         } else global.db.data.settings[this.user.jid] = {
@@ -130,6 +132,7 @@ module.exports = {
           backupTime: 0,
           group: false,
           jadibot: false,
+          nsfw: true,
           restrict: false,
           status: 0,
         }
@@ -157,8 +160,10 @@ module.exports = {
       let blockList = conn.blocklist.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid)
       if (blockList.includes(m.sender)) return // Pengguna yang diblokir tidak bisa menggunakan bot
       m.exp += Math.ceil(Math.random() * 10)
+
       let usedPrefix
       let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
+
       let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
       let isOwner = isROwner || m.fromMe
       let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
@@ -225,6 +230,7 @@ module.exports = {
               typeof plugin.command === 'string' ? // String?
                 plugin.command === command :
                 false
+
           if (!isAccept) continue
           m.plugin = name
           if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
@@ -271,10 +277,11 @@ module.exports = {
             fail('unreg', m, this)
             continue
           }
-          if (plugin.nsfw && !global.db.data.chat.nsfw) { // Nsfw
+          if (plugin.nsfw && !global.db.data.settings.nsfw) { // Nsfw
             fail('nsfw', m, this)
             continue
           }
+
           m.isCommand = true
           let xp = 'exp' in plugin ? parseInt(plugin.exp) : 17 // Pendapatkan XP per Command
           if (xp > 200) m.reply('Ngecit -_-') // Hehehe
@@ -343,6 +350,7 @@ module.exports = {
           user.exp += m.exp
           user.limit -= m.limit * 1
         }
+
         let stat
         if (m.plugin) {
           let now = + new Date
@@ -366,6 +374,7 @@ module.exports = {
           }
         }
       }
+
       try {
         require('./lib/print')(m, this)
       } catch (e) {
@@ -401,6 +410,7 @@ module.exports = {
                 .setAvatar(pp)
                 .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
                 .toAttachment()
+
               let lea = await new knights.Goodbye()
                 .setUsername(this.getName(user))
                 .setGuildName(this.getName(jid))
@@ -409,6 +419,7 @@ module.exports = {
                 .setAvatar(pp)
                 .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
                 .toAttachment()
+
               this.sendFile(jid, action === 'add' ? wel.toBuffer() : lea.toBuffer(), 'pp.jpg', text, null, false, {
                 contextInfo: {
                   mentionedJid: [user]
@@ -436,6 +447,7 @@ module.exports = {
     if (chat.delete) return
     await this.sendButton(m.key.remoteJid, `
 Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
+
 ketik *.on delete* untuk mematikan pesan ini
 `.trim(), '', 'Matikan Antidelete', ',on delete', m.message, {
       contextInfo: {
@@ -468,12 +480,16 @@ ketik *.on delete* untuk mematikan pesan ini
     if (!desc) return
     let caption = `
     @${descOwner.split`@`[0]} telah mengubah deskripsi grup.
+
     ${desc}
+
     ketik *.off desc* untuk mematikan pesan ini
         `.trim()
     this.sendButton(jid, caption, '', 'Matikan Deskripsi', ',off desc', { contextInfo: { mentionedJid: this.parseMention(caption) } })
+
   }
 }
+
 global.dfail = (type, m, conn) => {
   let msg = {
     rowner: 'Perintah ini hanya dapat digunakan oleh _*Pemilik Bot*_',
@@ -484,11 +500,12 @@ global.dfail = (type, m, conn) => {
     private: 'Perintah ini hanya dapat digunakan di Chat Pribadi',
     admin: 'Perintah ini hanya untuk *Admin* grup',
     botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini',
-    unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Ucup.19*',
+    unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Arif.19*',
     nsfw: 'NSFW tidak aktif'
   }[type]
   if (msg) return m.reply(msg)
 }
+
 let fs = require('fs')
 let chalk = require('chalk')
 let file = require.resolve(__filename)
