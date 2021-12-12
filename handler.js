@@ -85,6 +85,7 @@ module.exports = {
           if (!('antiBadword' in chat)) chat.antiBadword = true
           if (!('getmsg' in chat)) chat.getmsg = false
           if (!('viewonce' in chat)) chat.viewonce = true
+          if(!('nsfw' in chat)) chat.nsfw = true
         } else global.db.data.chats[m.chat] = {
           isBanned: false,
           welcome: false,
@@ -101,6 +102,7 @@ module.exports = {
           antiBadword: true,
           getmsg: false,
           viewonce: true,
+          nsfw: true,
         }
         let settings = global.db.data.settings[this.user.jid]
         if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
@@ -115,7 +117,6 @@ module.exports = {
           if (!isNumber(settings.backupTime)) settings.backupTime = 0
           if (!'group' in settings) settings.group = false
           if (!'jadibot' in settings) settings.jadibot = false
-          if (!'nsfw' in settings) settings.nsfw = true
           if (!'restrict' in settings) settings.restrict = false
           if (!isNumber(settings.status)) settings.status = 0
         } else global.db.data.settings[this.user.jid] = {
@@ -129,7 +130,6 @@ module.exports = {
           backupTime: 0,
           group: false,
           jadibot: false,
-          nsfw: true,
           restrict: false,
           status: 0,
         }
@@ -271,7 +271,7 @@ module.exports = {
             fail('unreg', m, this)
             continue
           }
-          if (plugin.nsfw && !global.db.data.settings.nsfw) { // Nsfw
+          if (plugin.nsfw && !global.db.data.chat.nsfw) { // Nsfw
             fail('nsfw', m, this)
             continue
           }
