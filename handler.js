@@ -120,7 +120,6 @@ module.exports = {
           if (!isNumber(settings.backupTime)) settings.backupTime = 0
           if (!'group' in settings) settings.group = false
           if (!'jadibot' in settings) settings.jadibot = false
-          if (!'nsfw' in settings) settings.nsfw = false
           if (!'restrict' in settings) settings.restrict = false
           if (!isNumber(settings.status)) settings.status = 0
         } else global.db.data.settings[this.user.jid] = {
@@ -134,7 +133,6 @@ module.exports = {
           backupTime: 0,
           group: false,
           jadibot: false,
-          nsfw: false,
           restrict: false,
           status: 0,
         }
