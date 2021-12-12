@@ -73,7 +73,6 @@ module.exports = {
         if (typeof chat !== 'object') global.db.data.chats[m.chat] = {}
         if (chat) {
           if (!('isBanned' in chat)) chat.isBanned = false
-          if (!'nsfw' in chat) chat.nsfw = true
           if (!('welcome' in chat)) chat.welcome = false
           if (!('detect' in chat)) chat.detect = false
           if (!('sWelcome' in chat)) chat.sWelcome = ''
@@ -90,7 +89,6 @@ module.exports = {
           if (!('viewonce' in chat)) chat.viewonce = true
         } else global.db.data.chats[m.chat] = {
           isBanned: false,
-          nsfw: true,
           welcome: false,
           detect: false,
           sWelcome: '',
@@ -122,6 +120,7 @@ module.exports = {
           if (!'jadibot' in settings) settings.jadibot = false
           if (!'restrict' in settings) settings.restrict = false
           if (!isNumber(settings.status)) settings.status = 0
+          if (!'nsfw' in settings) settings.nsfw = true
         } else global.db.data.settings[this.user.jid] = {
           anon: true,
           anticall: true,
@@ -135,6 +134,7 @@ module.exports = {
           jadibot: false,
           restrict: false,
           status: 0,
+          nsfw: true,
         }
       } catch (e) {
         console.error(e)
@@ -275,6 +275,10 @@ module.exports = {
           }
           if (plugin.register == true && _user.registered == false) { // Butuh daftar?
             fail('unreg', m, this)
+            continue
+          }
+          if (plugin.nsfw && !global.db.data.settings.nsfw) { // Nsfw
+            fail('nsfw', m, this)
             continue
           }
 
